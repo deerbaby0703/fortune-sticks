@@ -22,20 +22,31 @@ const stickPoem = document.getElementById('stick-poem');
 const stickOldMeaning = document.getElementById('stick-old-meaning');
 const stickSummary = document.getElementById('stick-summary');
 
-// 音樂自動播放（需要用戶互動才能真正播放）
+// 音樂自動播放
 let isMusicPlaying = false;
-document.addEventListener('click', () => {
-    if (!isMusicPlaying) {
-        bgm.play().then(() => {
-            isMusicPlaying = true;
-            musicToggle.innerText = '🔊';
-        }).catch(err => console.log('自動播放被阻擋，需要用戶互動'));
-    }
-}, { once: true });
+
+// 頁面載入時嘗試播放音樂
+window.addEventListener('load', () => {
+    bgm.play().then(() => {
+        isMusicPlaying = true;
+        musicToggle.innerText = '🔊';
+    }).catch(err => {
+        console.log('自動播放被阻擋，等待用戶互動');
+        // 如果自動播放失敗，在第一次點擊時播放
+        document.addEventListener('click', () => {
+            if (!isMusicPlaying) {
+                bgm.play().then(() => {
+                    isMusicPlaying = true;
+                    musicToggle.innerText = '🔊';
+                }).catch(err => console.log('音樂播放失敗:', err));
+            }
+        }, { once: true });
+    });
+});
 
 // 音樂控制按鈕
 musicToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // 防止觸發上面的自動播放
+    e.stopPropagation();
     if (bgm.paused) {
         bgm.play();
         musicToggle.innerText = '🔊';
@@ -49,14 +60,6 @@ musicToggle.addEventListener('click', (e) => {
 
 // 3. 點擊「開始求籤」
 drawBtn.addEventListener('click', () => {
-    // 確保音樂播放
-    if (bgm.paused) {
-        bgm.play().then(() => {
-            musicToggle.innerText = '🔊';
-            isMusicPlaying = true;
-        }).catch(err => console.log('音樂播放失敗:', err));
-    }
-    
     // 動畫開始
     stickContainer.classList.add('shaking');
     drawBtn.disabled = true;
