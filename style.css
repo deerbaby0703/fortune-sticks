@@ -1,0 +1,193 @@
+/* 全局設定 */
+body {
+    font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background-color: #fdf5e6; /* 米黃色背景 */
+    color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    border: 2px solid #8b0000; /* 深紅色邊框 */
+}
+
+h1 {
+    color: #8b0000;
+    margin-bottom: 5px;
+}
+
+/* 籤筒與動畫 */
+.stick-cylinder {
+    margin: 30px 0;
+    transition: transform 0.2s;
+}
+
+#stick-animation {
+    width: 100px;       
+    height: auto;       /* 高度自動，維持比例 */
+    display: block;     /* 讓圖片置中 */
+    margin: 0 auto;
+    cursor: pointer;    /* 滑鼠移過去會變手指，增加互動感 */
+}
+
+/* 按鈕樣式 */
+button {
+    background-color: #d4af37; /* 金色 */
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #b8962e;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button#reset-btn {
+    background-color: #8b0000; /* 重置按鈕用深紅色 */
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 8px 20px;
+}
+
+/* 音樂控制按鈕 */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #d4af37;
+    font-size: 24px;
+    padding: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background-color: #b8962e;
+}
+
+/* 1. 籤詩原文區塊 (古典風) */
+.poem-box {
+    border-left: 4px solid #8b0000;
+    background-color: #fdf5e6;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.poem {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px 0;
+    white-space: pre-line; /* 支援換行 */
+}
+
+.old-meaning {
+    font-size: 14px;
+    color: #666;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+    margin: 0;
+}
+
+/* 2. 雞大師解析區塊 (對話框風) */
+.chicken-summary-box {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.chicken-avatar {
+    margin-top: 30px; /* 讓頭像下移一點 */
+}
+
+.chicken-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    object-fit: cover;
+    object-position: center 40%; /* 讓圖片的上方 30% 位置對齊中心，避免卡到頭部 */
+    background: #fff;
+}
+
+.chat-bubble {
+    background: #fff;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    border-top-left-radius: 0; /* 讓左上角尖尖的像對話框 */
+    padding: 15px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.chat-bubble strong {
+    display: block;
+    color: #d4af37;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.chat-bubble p {
+    margin: 0;
+    white-space: pre-wrap; /* 這一行很重要！讓您的總結可以正常換行顯示 */
+}
+
+/* 其他輔助樣式 */
+.hidden { display: none; }
+.tag {
+    display: inline-block;
+    background: #8b0000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.result-img {
+    max-width: 80%;
+    height: auto;
+    display: none; /* 隱藏圖片 */
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+}
+.shaking { animation: shake 0.5s infinite; }
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雞舍觀音靈籤 | Fortune Sticks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 背景音樂 -->
+    <audio id="bgm" loop autoplay>
+        <source src="Music/黃金傳說.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 音樂控制按鈕 -->
+    <button id="music-toggle" class="music-btn">🔇</button>
+
+    <div class="container">
+        <header>
+            <h1>🐓雞舍觀音靈籤🏠</h1>
+            <p>心誠則靈，請默念心中的問題！</p>
+        </header>
+
+        <main>
+            <div class="stick-cylinder">
+                <img id="stick-animation" src="images/pray.PNG" alt="求籤筒">
+            </div>
+
+            <button id="draw-btn">開始求籤</button>
+
+            <div id="result-card" class="hidden">
+                <h2 id="stick-title"></h2>
+                <div class="tag" id="stick-luck"></div>
+
+                <img id="stick-image" src="" alt="靈籤圖片" class="result-img">
+
+                <!-- 籤詩原文區塊 -->
+                <div class="poem-box">
+                    <p class="poem" id="stick-poem"></p>
+                    <p class="old-meaning" id="stick-old-meaning"></p>
+                </div>
+
+                <!-- 雞大師解析區塊 -->
+                <div class="chicken-summary-box">
+                    <div class="chicken-avatar">
+                        <img id="chicken-avatar-img" src="images/img1.png" alt="雞大師">
+                    </div>
+                    <div class="chat-bubble">
+                        <strong>🐔雞大師解析</strong>
+                        <p id="stick-summary"></p>
+                    </div>
+                </div>
+                
+                <button id="reset-btn">再求一支</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Fortune Sticks By DeerBaby</p>
+        </footer>
+    </div>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
