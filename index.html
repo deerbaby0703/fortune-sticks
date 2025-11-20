@@ -8,14 +8,23 @@
 </head>
 <body>
     <!-- 背景音樂 -->
-    <audio id="bgm" loop autoplay>
+    <audio id="bgm" loop>
         <source src="Music/黃金傳說.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 音樂控制按鈕 -->
-    <button id="music-toggle" class="music-btn">🔇</button>
+    <!-- 歡迎畫面 -->
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <h1>🐓雞舍觀音靈籤🏠</h1>
+            <p>心誠則靈，請默念心中的問題</p>
+            <button id="enter-btn" class="enter-button">點此進入</button>
+        </div>
+    </div>
 
-    <div class="container">
+    <!-- 音樂控制按鈕 -->
+    <button id="music-toggle" class="music-btn hidden">�</button>
+
+    <div class="container hidden" id="main-container">
         <header>
             <h1>🐓雞舍觀音靈籤🏠</h1>
             <p>心誠則靈，請默念心中的問題！</p>

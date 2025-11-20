@@ -6,6 +6,9 @@ const fortuneImages = [
 ];
 
 // 2. 取得 HTML 元素
+const welcomeScreen = document.getElementById('welcome-screen');
+const enterBtn = document.getElementById('enter-btn');
+const mainContainer = document.getElementById('main-container');
 const drawBtn = document.getElementById('draw-btn');
 const resetBtn = document.getElementById('reset-btn');
 const resultCard = document.getElementById('result-card');
@@ -22,26 +25,19 @@ const stickPoem = document.getElementById('stick-poem');
 const stickOldMeaning = document.getElementById('stick-old-meaning');
 const stickSummary = document.getElementById('stick-summary');
 
-// 音樂自動播放
+// 進入按鈕 - 播放音樂並顯示主頁面
 let isMusicPlaying = false;
-
-// 頁面載入時嘗試播放音樂
-window.addEventListener('load', () => {
+enterBtn.addEventListener('click', () => {
+    // 播放音樂
     bgm.play().then(() => {
         isMusicPlaying = true;
         musicToggle.innerText = '🔊';
-    }).catch(err => {
-        console.log('自動播放被阻擋，等待用戶互動');
-        // 如果自動播放失敗，在第一次點擊時播放
-        document.addEventListener('click', () => {
-            if (!isMusicPlaying) {
-                bgm.play().then(() => {
-                    isMusicPlaying = true;
-                    musicToggle.innerText = '🔊';
-                }).catch(err => console.log('音樂播放失敗:', err));
-            }
-        }, { once: true });
-    });
+    }).catch(err => console.log('音樂播放失敗:', err));
+    
+    // 隱藏歡迎畫面，顯示主頁面
+    welcomeScreen.style.display = 'none';
+    mainContainer.classList.remove('hidden');
+    musicToggle.classList.remove('hidden');
 });
 
 // 音樂控制按鈕
